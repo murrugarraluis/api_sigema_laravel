@@ -89,7 +89,6 @@ class ArticleControllerTest extends TestCase
         $article = Article::limit(1)->first();
         $response = $this->actingAs($user)->withSession(['banned' => false])
             ->getJson("api/v1/$this->resource/$article->id");
-
         $response->assertStatus(200)
             ->assertJsonStructure(['data' => [
                 'id',
