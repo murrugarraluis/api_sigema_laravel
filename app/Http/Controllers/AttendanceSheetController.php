@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AttendanceSheetController extends Controller
 {
@@ -107,7 +108,7 @@ class AttendanceSheetController extends Controller
 		App::setLocale($locale);
 
 
-		$pdf = \PDF::loadView('attendance-report', compact('data'));
+		$pdf = PDF::loadView('attendance-report', compact('data'));
 		$orientation = $request->type == 'attended' ? 'portraint' : 'landscape';
 		$pdf->setPaper('A4', $orientation);
 //        $font = $pdf->getFontMetrics()->get_font("helvetica", "bold");

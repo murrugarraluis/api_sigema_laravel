@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MaintenanceSheetController extends Controller
 {
@@ -97,7 +98,7 @@ class MaintenanceSheetController extends Controller
 		$locale = $language == 'spanish' ? 'es' : 'en';
 		App::setLocale($locale);
 
-		$pdf = \PDF::loadView('maintenance-report', compact('data'));
+		$pdf = PDF::loadView('maintenance-report', compact('data'));
 		$orientation = $request->type == 'resumen' ? 'portraint' : 'landscape';
 		$pdf->setPaper('A4', $orientation);
 //        $font = $pdf->getFontMetrics()->get_font("helvetica", "bold");
@@ -200,7 +201,7 @@ class MaintenanceSheetController extends Controller
 
 		$data = $this->show($maintenanceSheet)->jsonSerialize();
 //		dd($data);
-		$pdf = \PDF::loadView('maintenance-one-report', compact('data'));
+		$pdf = PDF::loadView('maintenance-one-report', compact('data'));
 		$pdf->setPaper('A4');
 //		return $pdf->download();
 

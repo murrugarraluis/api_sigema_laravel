@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use PhpParser\Builder;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class WorkingSheetController extends Controller
 {
@@ -233,7 +234,7 @@ class WorkingSheetController extends Controller
 		$data['working_hours'] = array_map(function ($workingHour) {
 			return $workingHour->jsonSerialize();
 		}, $data['working_hours']);
-		$pdf = \PDF::loadView('work-one-report', compact('data'));
+		$pdf = PDF::loadView('work-one-report', compact('data'));
 		$pdf->setPaper('A4');
 //		return $pdf->download();
 
