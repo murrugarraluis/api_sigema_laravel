@@ -43,8 +43,7 @@ class ArticleControllerTest extends TestCase
         Article::factory(5)->create();
     }
 
-    public
-    function test_index()
+    public function test_index()
     {
 
         $this->withoutExceptionHandling();
@@ -73,7 +72,6 @@ class ArticleControllerTest extends TestCase
                     ],
                 ]
             ]]);
-
     }
 
     public
@@ -112,7 +110,6 @@ class ArticleControllerTest extends TestCase
                     ]
                 ]
             ]]);
-
     }
 
     public
@@ -133,7 +130,7 @@ class ArticleControllerTest extends TestCase
     function test_store()
     {
 
-//        $this->withoutExceptionHandling();
+        //        $this->withoutExceptionHandling();
         $user = User::factory()->create([
             'email' => 'admin@jextecnologies.com',
             'password' => bcrypt('123456')
@@ -185,7 +182,6 @@ class ArticleControllerTest extends TestCase
                 'message' => 'Article created.',
                 'data' => []
             ]);
-
     }
 
     public
@@ -243,7 +239,6 @@ class ArticleControllerTest extends TestCase
                 'message' => 'Article updated.',
                 'data' => []
             ]);
-
     }
 
     public
@@ -264,6 +259,5 @@ class ArticleControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertExactJson(['message' => 'Article removed.']);
-
     }
 }
