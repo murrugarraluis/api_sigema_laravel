@@ -38,19 +38,19 @@ use Tests\Unit\NotificationControllerTest;
 */
 
 Route::prefix('v1/')->group(function () {
-    // Route::get('/send', function () {
-    //     $data = [
-    //         "machine" => [
-    //             "serie_number" => 'AAA123',
-    //             "name" => 'Maquina XSY6',
-    //         ],
-    //         "message" => 'mensaje de prueba - maquina necesita mantenimiento',
-    //         "date_send_notification" => date('Y-m-d H:i:s'),
-    //         "is_view" => 0
-    //     ];
-    //     event(new \App\Events\NewNotification($data));
-    //     return 'send';
-    // });
+     Route::get('/send', function () {
+         $data = [
+             "machine" => [
+                 "serie_number" => 'AAA123',
+                 "name" => 'Maquina XSY6',
+             ],
+             "message" => 'mensaje de prueba - maquina necesita mantenimiento',
+             "date_send_notification" => date('Y-m-d H:i:s'),
+             "is_view" => 0
+         ];
+         event(new \App\Events\NewNotification($data));
+         return response()->json(['message'=>'Send']);
+     });
     Route::post('login', [AuthController::class, 'login']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
